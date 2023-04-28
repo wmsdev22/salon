@@ -853,12 +853,16 @@ return [
     'membership_thumbnail' => 'Thumbnail',
     'membership_thumbnail_help' => 'Insert thumbnail',
     'membership_thumbnail_placeholder' => 'Insert thumbnail',
+   
+    'membership_type' => 'Member Type',
+    'membership_type_help' => 'Insert Membership Type',
+    'membership_type_placeholder' => 'Insert Membership Type',
 
     'membership_featured_help' => 'Featured Membership <small>(Appears on Home Screen)</small>',
     
-    'membership_order' => 'Order',
-    'membership_order_help' => 'Insert Order',
-    'membership_order_placeholder' => 'Insert Order',
+    'membership_serial' => 'Serial No.',
+    'membership_serial_help' => 'Insert Serial No.',
+    'membership_serial_placeholder' => 'Display Serial No.',
     
     'membership_created_by' => 'Created By',
     'membership_created_by_help' => 'Insert created by',

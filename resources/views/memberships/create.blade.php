@@ -61,6 +61,7 @@
     <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
     <script src="{{asset('vendor/summernote/summernote.min.js')}}"></script>
     <script src="{{asset('vendor/dropzone/min/dropzone.min.js')}}"></script>
+    
     <script type="text/javascript">
         Dropzone.autoDiscover = false;
         var dropzoneFields = [];
@@ -89,12 +90,15 @@
                 },
                 removedfile: function (file) {
                     dzRemoveFile(
-                        file, var16110650672130312723ble, 'http://127.0.0.1:8000/categories/remove-media',
+                        file, var16110650672130312723ble, 'http://127.0.0.1:8000/membership/remove-media',
                         'image', '0', 'http://127.0.0.1:8000/uplaods/clear', 'Rg56AV3Rk3DPXI4ali96MEUnLw9r3GQ452plYAw8'
                     );
                 }
             });
             dz_var16110650672130312723ble[0].mockFile = var16110650672130312723ble;
             dropzoneFields['image'] = dz_var16110650672130312723ble;
+            $(function(){
+                changeMType();
+            });
         </script>
 @endpush

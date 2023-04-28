@@ -70,4 +70,36 @@
         Dropzone.autoDiscover = false;
         var dropzoneFields = [];
     </script>
+      <script type="text/javascript">
+            var var16110650672130312723ble = '';
+                        var dz_var16110650672130312723ble = $(".dropzone.image").dropzone({
+                url: "http://127.0.0.1:8000/uploads/store",
+                addRemoveLinks: true,
+                maxFiles: 1,
+                init: function () {
+                                    },
+                accept: function (file, done) {
+                    dzAccept(file, done, this.element, "https://nailstale.in/images/icons");
+                },
+                sending: function (file, xhr, formData) {
+                    dzSending(this, file, formData, 'Rg56AV3Rk3DPXI4ali96MEUnLw9r3GQ452plYAw8');
+                },
+                maxfilesexceeded: function (file) {
+                    dz_var16110650672130312723ble[0].mockFile = '';
+                    dzMaxfile(this, file);
+                },
+                complete: function (file) {
+                    dzComplete(this, file, var16110650672130312723ble, dz_var16110650672130312723ble[0].mockFile);
+                    dz_var16110650672130312723ble[0].mockFile = file;
+                },
+                removedfile: function (file) {
+                    dzRemoveFile(
+                        file, var16110650672130312723ble, 'http://127.0.0.1:8000/membership/remove-media',
+                        'image', '0', 'http://127.0.0.1:8000/uplaods/clear', 'Rg56AV3Rk3DPXI4ali96MEUnLw9r3GQ452plYAw8'
+                    );
+                }
+            });
+            dz_var16110650672130312723ble[0].mockFile = var16110650672130312723ble;
+            dropzoneFields['image'] = dz_var16110650672130312723ble;
+        </script>
 @endpush

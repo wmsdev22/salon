@@ -64,9 +64,8 @@ class MembershipController extends Controller
     public function create()
     {
         
-      //  $parentCategory= Membership::pluck('id','title');
-      //  $parentCategory = $this->membershipRepository->get('title', 'id');
-
+      //   $parentCategory= Membership::pluck('id','title');
+        //$typeMembership = $this->membershipRepository->get('type', 'id');
         $hasCustomField = in_array($this->membershipRepository->model(), setting('custom_field_models', []));
         if ($hasCustomField) {
             $customFields = $this->customFieldRepository->findByField('custom_field_model', $this->membershipRepository->model());
@@ -86,7 +85,7 @@ class MembershipController extends Controller
     {
      
         $input = $request->all();
-        $customFields = $this->customFieldRepository->findByField('custom_field_model', $this->membershipRepository->model());//print_r($customFields);exit;
+        $customFields = $this->customFieldRepository->findByField('custom_field_model', $this->membershipRepository->model());
         try {
             $membership = $this->membershipRepository->create($input);
             $membership->customFieldsValues()->createMany(getCustomFieldsValues($customFields, $request));
@@ -127,7 +126,7 @@ class MembershipController extends Controller
     }
 
     /**
-     * Show the form for editing the specified Category.
+     * Show the form for editing the specified Membership.
      *
      * @param int $id
      *

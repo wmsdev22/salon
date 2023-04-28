@@ -28,6 +28,7 @@ class MembershipRepository extends BaseRepository
     protected $fieldSearchable = [
         'id',
         'title',
+        'type',
         'cost',
         'discount',
         'validity_months',

@@ -62,6 +62,11 @@ Route::resource('faqs', 'API\FaqAPIController');
 Route::resource('custom_pages', 'API\CustomPageAPIController');
 
 Route::resource('categories', 'API\CategoryAPIController');
+//================================Membership=======================================================================================
+
+Route::resource('memberships', 'API\MembershipAPIController');
+
+//================================End Membership=======================================================================================
 
 Route::resource('e_services', 'API\EServiceAPIController');
 Route::resource('galleries', 'API\GalleryAPIController');

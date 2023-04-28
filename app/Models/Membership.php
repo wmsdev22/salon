@@ -50,11 +50,8 @@ class Membership extends Model implements HasMedia
         'title' => 'required|max:127',
         'order' => 'nullable|numeric|min:0',
         'cost'=>'required',
-        'value_offered'=>'required',
-        'discount'=>'required',
-        'validity_months'=>'required',
-        'created_by'=>'required',
-        'updated_by'=>'required'
+        'validity_months'=>'required'
+
     ];
     public $translatable = [
         
@@ -68,6 +65,7 @@ class Membership extends Model implements HasMedia
         'validity_months',
         'thumbnail',
         'order',
+        'type',
         'created_by',
         'updated_by'
     ];
@@ -83,6 +81,7 @@ class Membership extends Model implements HasMedia
         'discount' => 'integer',
         'validity_months' => 'integer',
         'thumbnail' =>'string',
+        'type'=>'string',
         'order'=>'integer', 
         'created_by' => 'string',
         'updated_by'=>'string'

@@ -2,7 +2,29 @@
     <h5 class="col-12 pb-4">{!! trans('lang.main_fields') !!}</h5>
 @endif
 <div class="d-flex flex-column col-sm-12 col-md-6">
-    <!-- Name Field -->
+  <!-- Membership Type Field -->   
+ 
+    <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
+        {!! Form::label('type', trans("lang.membership_type"),['class' => 'col-md-3 control-label  text-md-right mx-1']) !!}
+        <div class="col-md-9">
+            <select class="select2 form-control" id="dropdown" onchange="changeMType()"> 
+                <option value="">Select</option>
+                <option value="Discount on Invoice">Discount on Invoice</option>
+                <option value="Wallet Credits">Wallet Credits</option>
+                {!! Form::select('type') !!}
+            </select>
+        </div>
+    </div> 
+   {{-- <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
+        {!! Form::label('parent_id', trans("lang.category_parent_id"),['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
+        <div class="col-md-9">
+            {!! Form::select('parent_id', ['data-empty'=>trans("lang.category_parent_id_placeholder"), 'class' => 'select2 not-required form-control']) !!}
+            <div class="form-text text-muted">{{ trans("lang.category_parent_id_help") }}</div>
+        </div>
+    </div>  --}}
+
+  
+    <!-- Title Field -->
     <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
         {!! Form::label('title', trans("lang.membership_title"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
@@ -24,44 +46,9 @@
         </div>
     </div>
 
-    <!-- Description Field -->
-    <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
-        {!! Form::label('validity_months', trans("lang.membership_validity_months"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
-        <div class="col-md-9">
-            {!! Form::text('validity_months', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_validity_months_placeholder")]) !!}
-            <div class="form-text text-muted">
-                {{ trans("lang.membership_validity_months_help") }}
-            </div>
-        </div>
-    </div>
 
-      <!-- Created By -->
-      <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
-        {!! Form::label('created_by', trans("lang.membership_created_by"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
-        <div class="col-md-9">
-            {!! Form::text('created_by', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_created_by_placeholder")]) !!}
-            <div class="form-text text-muted">
-                {{ trans("lang.membership_created_by_help") }}
-            </div>
-        </div>
-    </div>
-
-    <!-- Updated By -->
-    <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
-        {!! Form::label('updated_by', trans("lang.membership_updated_by"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
-        <div class="col-md-9">
-            {!! Form::text('updated_by', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_updated_by_placeholder")]) !!}
-            <div class="form-text text-muted">
-                {{ trans("lang.membership_updated_by_help") }}
-            </div>
-        </div>
-    </div>
-
-   
-    
-</div>
-<div class="d-flex flex-column col-sm-12 col-md-6">
-    <!-- Value Offered -->
+      <!-- Value Offered -->
+  <div id="field1" style="display: none;">
     <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
         {!! Form::label('value_offered', trans("lang.membership_value_offered"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
@@ -71,9 +58,10 @@
             </div>
         </div>
     </div>
+ </div>
 
 <!-- Discount -->
-
+  <div id="field2" style="display: none;">
     <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
         {!! Form::label('discount', trans("lang.membership_discount"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
@@ -83,17 +71,23 @@
             </div>
         </div>
     </div>
-    <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
-        {!! Form::label('order', trans("lang.membership_order"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
+    </div>
+     <!-- Description Field -->
+     <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
+        {!! Form::label('validity_months', trans("lang.membership_validity_months"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
-            {!! Form::text('order', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_order_placeholder")]) !!}
+            {!! Form::text('validity_months', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_validity_months_placeholder")]) !!}
             <div class="form-text text-muted">
-                {{ trans("lang.membership_order_help") }}
+                {{ trans("lang.membership_validity_months_help") }}
             </div>
         </div>
-    </div>
+    </div> 
 
-    <div class="form-group align-items-start d-flex flex-column flex-md-row">
+    
+</div>
+<div class="d-flex flex-column col-sm-12 col-md-6">
+
+<div class="form-group align-items-start d-flex flex-column flex-md-row">
         {!! Form::label('thubmnail', trans("lang.membership_thumbnail"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
             <div style="width: 100%" class="dropzone image" id="image" data-field="image">
@@ -105,6 +99,20 @@
             </div>
         </div>
     </div>
+
+
+    <div class="form-group align-items-baseline d-flex flex-column flex-md-row">
+        {!! Form::label('order', trans("lang.membership_serial"), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
+        <div class="col-md-9">
+            {!! Form::text('order', null,  ['class' => 'form-control','placeholder'=>  trans("lang.membership_serial_placeholder")]) !!}
+            <div class="form-text text-muted">
+                {{ trans("lang.membership_serial_help") }}
+            </div>
+        </div>
+    </div>
+  
+    
+    
 
     </div>
 <!-- Submit Field -->
@@ -119,3 +127,35 @@
     </button>
     <a href="{!! route('memberships.index') !!}" class="btn btn-default"><i class="fa fa-undo"></i> {{trans('lang.cancel')}}</a>
 </div>
+
+<script>
+    var dropdown = document.getElementById('dropdown');
+    var field_1 = document.getElementById('field1');
+    var field_2 = document.getElementById('field2');
+
+    dropdown.addEventListener('change', function() {
+        changeMType();
+    });
+    function changeMType()
+    {
+        
+        
+        if (dropdown.value == 'Discount on Invoice') 
+        {
+            $(field_1).show();
+            $(field_2).hide();
+
+            
+        }
+         else if (dropdown.value == 'Wallet Credits') {
+            $(field_1).hide();
+            $(field_2).show();
+        }
+         else
+          {
+            $(field_1).hide();
+            $(field_2).hide();
+          }
+    }
+    
+</script>
